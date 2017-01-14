@@ -4,10 +4,10 @@ EXPOSE 8000
 VOLUME /src/storage
 
 # Install Alpine Linux packages
-RUN apk update && apk add autoconf git icu-dev imagemagick-dev openssl-dev
+RUN apk update && apk add autoconf git icu-dev imagemagick-dev
 
 # Install PHP extensions
-RUN docker-php-ext-install exif intl openssl pcntl pdo pdo_mysql
+RUN docker-php-ext-install exif intl pcntl pdo pdo_mysql
 
 RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS libtool && \
     pecl install apcu && \
